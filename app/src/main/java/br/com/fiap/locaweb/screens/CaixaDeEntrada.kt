@@ -8,19 +8,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -30,18 +25,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.com.fiap.locaweb.R
+import br.com.fiap.locaweb.components.BottomBox
 
 @Composable
-fun ThirdScreen(navController: NavHostController) {
+fun CaixaDeEntrada(navController: NavHostController) {
     val searchQuery = remember { mutableStateOf("") }
+    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
 
     Column(
         modifier = Modifier
@@ -98,45 +95,21 @@ fun ThirdScreen(navController: NavHostController) {
             fontWeight = FontWeight.Light,
             color = Color.Gray,
             fontSize = 20.sp,
-            modifier = Modifier.padding(vertical = 16.dp)
+            modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-        )
-
-        Spacer(modifier = Modifier.height(300.dp))
-
-        Divider()
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-        Text(
-            text = "Atualizado Há Pouco",
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Light
+                .padding(vertical = 16.dp)
         )
 
         Spacer(modifier = Modifier.weight(1f))
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            contentAlignment = Alignment.BottomEnd
-        ) {
-            TextButton(
-                onClick = { navController.navigate("quartaTela") },
-                modifier = Modifier
-                    .size(56.dp)
-                    .background(color = Color.Transparent, shape = CircleShape)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.escreva),
-                    contentDescription = "escreva"
-                )
-            }
-        }
+        BottomBox(
+            text = "Atualizado Há Pouco",
+            onButtonClick = { navController.navigate("envioEmail") },
+            navController = navController
+        )
     }
 }
+
 
 
 

@@ -1,5 +1,6 @@
 package br.com.fiap.locaweb
 
+import MenuEmail
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,10 +13,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.com.fiap.locaweb.databinding.ActivityMainBinding
-import br.com.fiap.locaweb.screens.FirstScreen
-import br.com.fiap.locaweb.screens.FourthScreen
-import br.com.fiap.locaweb.screens.SecondScreen
-import br.com.fiap.locaweb.screens.ThirdScreen
+import br.com.fiap.locaweb.screens.CaixaDeEntrada
+import br.com.fiap.locaweb.screens.EnvioEmail
+import br.com.fiap.locaweb.screens.TelaLogin
+
 import br.com.fiap.locaweb.ui.theme.LocaWebTheme
 
 
@@ -42,18 +43,18 @@ fun LocaWebApp() {
 
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "PrimeiraTela") {
-        composable("primeiraTela") {
-            FirstScreen(navController)
+    NavHost(navController = navController, startDestination = "telaLogin") {
+        composable("telaLogin") {
+            TelaLogin(navController)
         }
-        composable("segundaTela") {
-            SecondScreen(navController)
+        composable("menuEmail") {
+            MenuEmail(navController)
         }
-        composable("terceiraTela") {
-            ThirdScreen(navController)
+        composable("caixaDeEntrada") {
+            CaixaDeEntrada(navController)
         }
-        composable("quartaTela") {
-            FourthScreen(navController)
+        composable("envioEmail") {
+            EnvioEmail(navController)
         }
     }
 }

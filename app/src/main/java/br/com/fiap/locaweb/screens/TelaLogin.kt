@@ -32,7 +32,7 @@ import androidx.navigation.NavHostController
 import br.com.fiap.locaweb.R
 
 @Composable
-fun FirstScreen(navController: NavHostController) {
+fun TelaLogin(navController: NavHostController) {
     var email by remember {
         mutableStateOf("")
     }
@@ -152,7 +152,7 @@ fun FirstScreen(navController: NavHostController) {
                 if (email.isEmpty()) erroEmail = true else erroEmail = false
                 if (senha.isEmpty()) erroSenha = true else erroSenha = false
                 if (!erroEmail && !erroSenha) {
-                    navController.navigate("segundaTela")
+                    navController.navigate("menuEmail")
                 }
             },
             modifier = Modifier.fillMaxWidth(),

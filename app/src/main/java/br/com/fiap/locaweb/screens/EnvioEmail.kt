@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun FourthScreen(navController: NavHostController) {
+fun EnvioEmail(navController: NavHostController) {
     val destinatario = remember { mutableStateOf("") }
     val assunto = remember { mutableStateOf("") }
     val corpo = remember { mutableStateOf("") }
