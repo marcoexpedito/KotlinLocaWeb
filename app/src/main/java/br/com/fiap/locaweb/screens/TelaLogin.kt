@@ -1,5 +1,6 @@
 package br.com.fiap.locaweb.screens
 
+import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,9 +34,16 @@ import br.com.fiap.locaweb.R
 
 @Composable
 fun TelaLogin(navController: NavHostController) {
+
+    fun isValidEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
     var email by remember {
         mutableStateOf("")
     }
+
+    var isEmailValid by remember { mutableStateOf(true) }
 
     var senha by remember {
         mutableStateOf("")
@@ -84,21 +92,25 @@ fun TelaLogin(navController: NavHostController) {
 
         OutlinedTextField(
             value = email,
-            onValueChange = { email = it },
+            onValueChange = {
+                email = it
+                // Atualize o estado de validação conforme o valor do e-mail
+                isEmailValid = isValidEmail(it)
+            },
             modifier = Modifier.width(370.dp),
             label = { Text(text = "E-mail") },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email
-            )
+            ),
+            isError = !isEmailValid
         )
 
-        if (erroEmail) {
+        if (!isEmailValid) {
             Text(
-                text = "O e-mail é obrigatório!",
-                modifier = Modifier.width(395.dp),
-                fontSize = 14.sp,
+                text = "E-mail inválido",
                 color = Color.Red,
-                textAlign = TextAlign.End
+                fontSize = 14.sp,
+                modifier = Modifier.padding(top = 4.dp)
             )
         }
 
