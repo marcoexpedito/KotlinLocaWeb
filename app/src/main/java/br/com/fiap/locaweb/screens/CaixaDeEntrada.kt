@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.com.fiap.locaweb.R
 import br.com.fiap.locaweb.components.BottomBox
+import br.com.fiap.locaweb.model.Email
 
 @Composable
 fun CaixaDeEntrada(navController: NavHostController) {
@@ -110,6 +111,11 @@ fun CaixaDeEntrada(navController: NavHostController) {
     }
 }
 
+@Composable
+fun EmailCard(email: Email,
+              atualizar: () -> Unit) {
+
+}
 
 
 
