@@ -31,37 +31,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.com.fiap.locaweb.R
+import br.com.fiap.locaweb.viewModel.UserViewModel
 
 @Composable
-fun TelaLogin(navController: NavHostController) {
-
+fun TelaLogin(navController: NavHostController, userViewModel: UserViewModel) {
+    // Função para validar o e-mail
     fun isValidEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    var email by remember {
-        mutableStateOf("")
-    }
-
+    // Estados para controlar o input e a validação
+    var email by remember { mutableStateOf("") }
     var isEmailValid by remember { mutableStateOf(true) }
-
-    var senha by remember {
-        mutableStateOf("")
-    }
-
-    var erroEmail by remember {
-        mutableStateOf(false)
-    }
-
-    var erroSenha by remember {
-        mutableStateOf(false)
-    }
-
-    val tamanhoSenha = 15
+    var senha by remember { mutableStateOf("") }
+    var erroEmail by remember { mutableStateOf(false) }
+    var erroSenha by remember { mutableStateOf(false) }
 
     Column(
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.padding(15.dp))
@@ -163,8 +150,10 @@ fun TelaLogin(navController: NavHostController) {
             onClick = {
                 if (email.isEmpty()) erroEmail = true else erroEmail = false
                 if (senha.isEmpty()) erroSenha = true else erroSenha = false
+
                 if (!erroEmail && !erroSenha) {
-                    navController.navigate("menuEmail")
+                    // Chamada ao ViewModel para logar
+                    userViewModel.login(email, senha)
                 }
             },
             modifier = Modifier.fillMaxWidth(),
@@ -172,5 +161,11 @@ fun TelaLogin(navController: NavHostController) {
         ) {
             Text(text = "Entrar", color = Color.White)
         }
+    }
+
+    // Observa o estado do usuário logado no ViewModel
+    userViewModel.usuarioLogado?.let { usuario ->
+        // Se o login for bem-sucedido, navega para a próxima tela
+        navController.navigate("menuEmail")
     }
 }
