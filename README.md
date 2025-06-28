@@ -1,85 +1,74 @@
 
-# 📱 App em Kotlin para LocaWeb
+# 📱 ProjetoApp – Simulador de Envio de E-mails
 
-Aplicativo web/mobile simples para simular envio de e-mails.
+Aplicativo Android desenvolvido em Kotlin no Bootcamp da Locaweb, com foco no aprendizado de Jetpack Compose, gerenciamento de estado com ViewModel e simulação de envio e recebimento de e-mails em ambiente controlado.
+
 ---
 
 ## 🚀 Funcionalidades principais
 
-- Cadastro e login de usuários (via e-mail, redes sociais etc.)
-- Criação, edição e exclusão de itens (tarefas, transações, mensagens…)
-- Visão geral com listagem, filtros e busca
-- Possibilidade de salvar dados localmente ou em backend remoto
+✅ Tela de Login
+- Autenticação simples com validação de usuário e senha.
+
+✅ Menu de E-mails
+- Interface que simula a navegação entre diferentes categorias de e-mails (caixa de entrada, enviados, etc.).
+
+✅ Envio de E-mail
+- Formulário para compor e simular o envio de uma mensagem (campos: destinatário, assunto, corpo do e-mail).
+- Salvamento do e-mail enviado em uma base local.
+
+✅ Caixa de Entrada
+- Exibição de lista de e-mails armazenados localmente simulando mensagens recebidas.
+
+✅ Persistência Local
+- Utilização de banco de dados local (Room) para armazenar usuários e e-mails simulados.
+
+✅ Arquitetura Moderna
+- Separação em camadas:
+  - `model`: dados e entidades (ex.: `Email.kt`, `Usuario.kt`).
+  - `viewModel`: gerenciamento de estado (ex.: `UserViewModel.kt`).
+  - `screens`: telas da aplicação (ex.: `TelaLogin.kt`, `EnvioEmail.kt`, `CaixaDeEntrada.kt`).
+  - `components`: componentes de interface reutilizáveis.
+  - `ui/theme`: temas e estilos personalizados.
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## 🛠️ Tecnologias e práticas utilizadas
 
-Front-end  
-- Framework/library: React / Vue / Angular / Flutter (escolher)
-- UI: Bootstrap / Material-UI / Tailwind CSS
-- Outras: Axios (requisições HTTP), Formik (formulários), etc.
-
-Back-end (se houver)  
-- Node.js + Express / Django / Flask / Firebase
-- Banco: MongoDB / PostgreSQL / SQLite
-
----
-
-## ⚙️ Como rodar localmente
-
-1. Clone o repositório:  
-```bash
-git clone https://github.com/marcoexpedito/ProjetoApp.git
-```  
-2. Instale as dependências:  
-```bash
-cd ProjetoApp
-npm install     # ou yarn install
-```  
-3. Configure variáveis de ambiente:  
-Crie um arquivo `.env` com, por exemplo:  
-```
-REACT_APP_API_URL=http://localhost:3001
-```
-4. Inicie o servidor:  
-```bash
-npm start       # front-end
-# e se tiver back-end:
-cd server && npm start
-```
-5. Acesse: `http://localhost:3000`
+- Kotlin – linguagem principal
+- Jetpack Compose – construção declarativa da interface
+- ViewModel – gerenciamento de estado e ciclo de vida
+- Room Database – persistência de dados local
+- Gradle Kotlin DSL – gerenciamento de dependências
+- Arquitetura MVVM – organização em camadas
+- Material Design – padrões visuais e interativos
 
 ---
 
 ## 🎯 Objetivos do projeto
 
-- Aprender/workflow com [React/Vue etc.]
-- Implementar autenticação e CRUD básico
-- Criar interface responsiva para desktop e mobile
+- Praticar conceitos fundamentais de desenvolvimento Android moderno
+- Criar experiência de usuário fluida com Jetpack Compose
+- Simular fluxo completo de autenticação, envio e exibição de e-mails
+- Aprender persistência de dados local e uso de ViewModel
 
 ---
 
-## 💡 Possíveis melhorias
+## 💡 Possíveis melhorias futuras
 
-- Implementar upload de arquivos/imagens
-- Adicionar testes automatizados (unitários e de integração)
-- Criar versão PWA para instalação no celular
-- Suporte a múltiplos idiomas (i18n)
-- Integração com notificações push
-
----
-
-## 🤝 Contribuições
-
-1. Fork no GitHub  
-2. Branch: `git checkout -b feature/nome-do-recurso`  
-3. Commit: `git commit -m "Add: descrição do recurso"`  
-4. Push: `git push origin feature/nome-do-recurso`  
-5. Abra um Pull Request explicando o contexto
+- Integração real com serviços de e-mail (ex.: Gmail API)
+- Implementar notificações push
+- Suporte a múltiplos usuários e múltiplas contas
+- Filtro e pesquisa de e-mails
+- Melhoria de usabilidade e responsividade
 
 ---
 
-## 📝 Licença
+## 👨‍💻 Sobre o autor
 
-Projeto sob a licença MIT — fique à vontade para usar, modificar e compartilhar.
+Este projeto foi desenvolvido como parte do Bootcamp Kotlin Locaweb, com foco em consolidar práticas modernas do ecossistema Android.
+
+---
+
+🔗 Repositório no GitHub:  
+https://github.com/marcoexpedito/KotlinLocaWeb
