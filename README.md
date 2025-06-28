@@ -1,8 +1,7 @@
 
-# 📱 ProjetoApp
+# 📱 App em Kotlin para LocaWeb
 
-Aplicativo web/mobile simples para [descreva o propósito: ex: controle de tarefas, gerenciamento de finanças, chat, etc.].
-
+Aplicativo web/mobile simples para simular envio de e-mails.
 ---
 
 ## 🚀 Funcionalidades principais
